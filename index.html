@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>project Norway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body style="background-color: #5ba1b9;">
+   <h1 style="font-family: 'Montserrat', Arial, sans-serif; text-align: center; color: #13265d; font-size: 60px; text-decoration: underline;">NORWAY</h1>
+   <!-- Блок 1: текст слева, фото справа -->
+<div style="display: flex; gap: 20px; align-items: center; margin-bottom: 40px;">
+    <div style="flex: 1;">
+        <p>Norway is a country in the north of Europe. It is famous for its beautiful nature — high mountains, deep fjords, and cold, clean water. Many people visit Norway to see the Northern Lights, which are colorful lights in the winter sky. The weather is cold, but Norwegians like to spend time outside. They ski, hike, and fish even when it is snowing.</p>
+    </div>
+    <div style="flex: 1;">
+        <img src="1.jpg" style="width: 100%; border-radius: 5px;">
+    </div>
+</div>
+
+<!-- Блок 2: фото слева, текст справа -->
+<div style="display: flex; gap: 20px; align-items: center;">
+    <div style="flex: 1;">
+        <img src="2.jpg" style="width: 100%; height: 200px; border-radius: 5px;">
+    </div>
+    <div style="flex: 1;">
+        <p>The capital of Norway is Oslo. It is a modern city with museums, parks, and a famous opera house. Norway is also a very safe and rich country. Many people speak English well, so it is not hard for tourists or students. If you dream about living or studying in Norway, you can make it real with hard work and good English.</p>
+    </div>
+</div>
+</div>
+<h5>
+<h2 style="text-align: center; font-family: Montserrat; color: #13265d; text-decoration: underline;">Nature in Norway</h2>
+
+Norway has very beautiful and wild nature. You can see tall mountains, deep green forests, and long fjords. Fjords are like narrow seas between big rocks. The water is clean and quiet. Many animals live there — for example, moose, reindeer, and eagles. People in Norway love to walk in nature. It is free and open for everyone.
+
+<h2 style="text-align: center; font-family: Montserrat; color: #13265d; text-decoration: underline;">The Northern Lightsy</h2>
+
+The Northern Lights are also called Aurora Borealis. You can see them in the north of Norway during winter. The sky becomes green, purple, pink, and blue. The lights move and dance slowly. It looks like magic. Many people travel to Norway just to see this. If you are lucky and the sky is clear, you will never forget this view. It is one of the most beautiful things on Earth. 
+
+</h5>
+<style>
+    /* меню и стили */
+    .menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    .menu-btn {
+        background-color: #13265d;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 12px;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .menu-dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        min-width: 220px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        overflow: hidden;
+    }
+    .menu-dropdown a {
+        display: block;
+        padding: 14px 20px;
+        color: #13265d;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+    .menu-dropdown a:last-child {
+        border-bottom: none;
+    }
+    .menu-dropdown a:hover {
+        background-color: #e8f0fe;
+    }
+    .menu.open .menu-dropdown {
+        display: block;
+    }
+    .content-card {
+        background: white;
+        border-radius: 30px;
+        padding: 30px;
+        margin-top: 80px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .question-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: #f5f7fa;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    .question-text {
+        font-weight: 700;
+        color: #13265d;
+    }
+    .answer {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+    }
+    .answer.show {
+        display: block;
+    }
+    .resource-link {
+        display: block;
+        padding: 12px 15px;
+        margin: 10px 0;
+        background: #f5f7fa;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #13265d;
+    }
+    .cookie {
+        font-size: 80px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .cookie-count {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #13265d;
+        margin-top: 15px;
+    }
+</style>
+
+<div class="menu" id="myMenu">
+    <button class="menu-btn" id="menuBtn">☰</button>
+    <div class="menu-dropdown">
+        <a onclick="showQuestions()">❓ Questions</a>
+        <a onclick="showSources()">📚 Sources</a>
+        <a onclick="showAbout()">ℹ️ About the site</a>
+        <a onclick="showSettings()">⚙️ Settings</a>
+    </div>
+</div>
+
+<div id="contentArea" class="content-card">
+    <p style="text-align: center; color: #666;">Click the menu ☰ to get started!</p>
+</div>
+
+<script>
+    const menu = document.getElementById('myMenu');
+    const menuBtn = document.getElementById('menuBtn');
+    let cookieCount = 0;
+
+    menuBtn.addEventListener('click', function() {
+        menu.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!menu.contains(event.target)) {
+            menu.classList.remove('open');
+        }
+    });
+
+    function showQuestions() {
+        menu.classList.remove('open');
+        document.getElementById('contentArea').innerHTML = `
+            <h2 style="color:#13265d">❓ Questions about Norway</h2>
+            <div class="question-item" onclick="toggleAnswer(this)">
+                <div class="question-text">🇳🇴 What is the capital of Norway?</div>
+                <div class="answer">Oslo! Surrounded by fjords and forests.</div>
+            </div>
+            <div class="question-item" onclick="toggleAnswer(this)">
+                <div class="question-text">🌊 What are fjords?</div>
+                <div class="answer">Deep sea inlets carved by glaciers. Geirangerfjord is the most famous.</div>
+            </div>
+            <div class="question-item" onclick="toggleAnswer(this)">
+                <div class="question-text">✨ When can you see Northern Lights?</div>
+                <div class="answer">From late September to March, best in Northern Norway.</div>
+            </div>
+        `;
+    }
+
+    function showSources() {
+        menu.classList.remove('open');
+        document.getElementById('contentArea').innerHTML = `
+            <h2 style="color:#13265d">📚 Useful Resources</h2>
+            <a href="https://www.visitnorway.com" target="_blank" class="resource-link">🌐 Visit Norway — Official Site</a>
+            <a href="https://en.wikipedia.org/wiki/Norway" target="_blank" class="resource-link">📖 Wikipedia — Norway</a>
+            <a href="https://www.fjordtours.com" target="_blank" class="resource-link">⛴️ Fjord Tours</a>
+        `;
+    }
+
+    function showAbout() {
+        menu.classList.remove('open');
+        document.getElementById('contentArea').innerHTML = `
+            <h2 style="color:#13265d">ℹ️ About This Site</h2>
+            <p>Created by <strong>Kristina</strong>, a 14-year-old girl, as a school project about Norway.</p>
+            <p style="margin-top:15px">🇳🇴 I love Norway's nature, fjords, and the Northern Lights. Hope you enjoy!</p>
+        `;
+    }
+
+    function showSettings() {
+        menu.classList.remove('open');
+        document.getElementById('contentArea').innerHTML = `
+            <h2 style="color:#13265d">⚙️ Settings</h2>
+            <div style="text-align:center">
+                <div class="cookie" onclick="cookieClick()">🍪</div>
+                <div class="cookie-count">Cookies clicked: ${cookieCount}</div>
+            </div>
+        `;
+    }
+
+    function cookieClick() {
+        cookieCount++;
+        const counter = document.querySelector('.cookie-count');
+        if (counter) counter.innerHTML = `Cookies clicked: ${cookieCount}`;
+    }
+
+    function toggleAnswer(el) {
+        el.querySelector('.answer').classList.toggle('show');
+    }
+</script>
+<style>
+    /* ПЕРЕОПРЕДЕЛЯЕМ — чтобы меню точно было поверх */
+    .menu {
+        position: fixed !important;
+        top: 20px !important;
+        right: 20px !important;
+        z-index: 9999 !important;
+    }
+
+    .menu-dropdown {
+        position: absolute !important;
+        top: 60px !important;
+        right: 0 !important;
+        background: white !important;
+        z-index: 10000 !important;
+    }
+</style>
+  </body>
+  
+</html>
